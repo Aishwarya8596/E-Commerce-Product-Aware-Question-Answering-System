@@ -1,5 +1,5 @@
 # Question-Answering-System
-Proposed an e-commerce question answering system that learns product information from product reviews and descriptions. It accordingly crafts appropriate responses to questions about the product. Finally, created a Web App to display the result.
+Proposed an e-commerce question answering system using Deep Learning and Natural Language Processing techniques that learns product information from product reviews and descriptions. Then, the system accordingly crafts appropriate responses to the questions asked by customer about the product. Finally, created a Web App to display the result.
 
 Link to the Dataset:
 
