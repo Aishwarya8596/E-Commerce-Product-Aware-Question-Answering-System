@@ -1,0 +1,76 @@
+<mvc:View controllerName="com.sjsu.ECommerceQnA.controller.DetailDetail"
+  xmlns="sap.m"
+  xmlns:m="sap.m"
+  xmlns:f="sap.f"
+  xmlns:table="sap.ui.table"
+  xmlns:mvc="sap.ui.core.mvc">
+  <f:DynamicPage toggleHeaderOnTitleClick="false">
+    <f:title>
+      <f:DynamicPageTitle>
+        <f:heading>
+          <m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+            <m:Title text="Product Aware Question Answering System" wrapping="true" class="sapUiTinyMarginEnd"/>
+          </m:FlexBox>
+        </f:heading>
+
+      </f:DynamicPageTitle>
+    </f:title>
+    <f:content>
+
+      <VBox>
+
+        <FlexBox width="100%" alignItems="Start" class="sapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+          <Text>
+            <layoutData>
+              <FlexItemData growFactor="1" />
+            </layoutData>
+          </Text>
+          <Input id="iptQuestion" placeholder="Question" class="sapUiLargeMargin">
+            <layoutData>
+              <FlexItemData growFactor="1" />
+            </layoutData>
+          </Input>
+          <Text>
+            <layoutData>
+              <FlexItemData growFactor="1" />
+            </layoutData>
+          </Text>
+        </FlexBox>
+
+        <FlexBox alignItems="Center" justifyContent="Center">
+          <Button text="Submit" type="Emphasized" press="onSubmit" ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+          </Button>
+        </FlexBox>
+
+        <FlexBox alignItems="Center" justifyContent="Center">
+          <Table id="idAnswersTable" class="sapUiMediumMargin" width="95%" items="{
+                  path: '/answers'
+                }">
+            <columns>
+              <Column>
+                <Text text="Model" />
+              </Column>
+              <Column>
+                <Text text="Answer" />
+              </Column>
+              <Column>
+                <Text text="Time" />
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem >
+                <cells>
+                  <Text text="{model}" class="sapUiMediumMargin"/>
+                  <Text text="{answer}" class="sapUiMediumMargin"/>
+                  <Text text="{time}" class="sapUiMediumMargin"/>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+
+        </FlexBox>
+
+      </VBox>
+    </f:content>
+  </f:DynamicPage>
+</mvc:View>

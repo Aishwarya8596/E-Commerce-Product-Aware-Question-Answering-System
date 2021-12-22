@@ -1,0 +1,131 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "com.sjsu.ECommerceQnA",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "rootView": {
+      "viewName": "com.sjsu.ECommerceQnA.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "fcl"
+    },
+    "dependencies": {
+      "minUI5Version": "1.60.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {},
+        "sap.uxap": {}
+      }
+    },
+    "config": {
+      "fullWidth": true
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.sjsu.ECommerceQnA.view",
+        "controlId": "flexibleColumnLayout",
+        "transition": "slide",
+        "bypassed": {},
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "page2",
+          "name": "page2",
+          "target": "page2",
+          "layout": "EndColumnFullScreen"
+        },
+        {
+          "pattern": ":layout:",
+          "name": "master",
+          "target": [
+            "master",
+            "detail"
+          ]
+        },
+        {
+          "pattern": "detail/{product}/{layout}",
+          "name": "detail",
+          "target": [
+            "master",
+            "detail"
+          ]
+        },
+        {
+          "pattern": "detail/{product}/detailDetail/{supplier}/{layout}",
+          "name": "detailDetail",
+          "target": [
+            "master",
+            "detail",
+            "detailDetail"
+          ]
+        }
+      ],
+      "targets": {
+        "master": {
+          "viewName": "Master",
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages"
+        },
+        "detailDetail": {
+          "viewName": "DetailDetail",
+          "controlAggregation": "endColumnPages"
+        },
+        "page2": {
+          "viewName": "AboutPage",
+          "controlAggregation": "endColumnPages"
+        }
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sjsu.ECommerceQnA.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    }
+  }
+}

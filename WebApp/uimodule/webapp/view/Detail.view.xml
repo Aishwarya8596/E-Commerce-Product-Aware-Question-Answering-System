@@ -1,0 +1,102 @@
+<mvc:View controllerName="com.sjsu.ECommerceQnA.controller.Detail"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc">
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="false" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="false" isChildPage="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<heading>
+					<m:Title text="{products>title}" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</heading>
+
+				<!-- <snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<f:Avatar src="https://sapui5.hana.ondemand.com/{products>ProductPicUrl}" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd"/>
+							<m:Title text="{products>Name}" wrapping="true"/>
+						</m:FlexBox>
+					</m:FlexBox>
+				</snappedHeading>
+
+				<navigationActions>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://full-screen" press=".handleFullScreen" tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://exit-full-screen" press=".handleExitFullScreen" tooltip="Exit Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"/>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press=".handleClose" tooltip="Close column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+				</navigationActions> -->
+
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<!-- <headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar src="https://sapui5.hana.ondemand.com/{products>ProductPicUrl}" displaySize="L" displayShape="Square" class="sapUiTinyMarginEnd">
+				</f:Avatar>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Main Category"/>
+					<m:Text text="{products>MainCategory}"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Subcategory"/>
+					<m:Text text="{products>Category}"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Price"/>
+					<m:ObjectNumber number="{products>CurrencyCode} {products>Price}" emphasized="false"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent> -->
+
+		<sections>
+			<ObjectPageSection title="General Information">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<form:SimpleForm maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<m:Image src="{products>imUrl}" height="20rem"/>
+									<m:Label text="Description"/>
+									<m:Text text="{products>description}"/>
+									<m:Label text="Price"/>
+									<m:Text text="{products>price}"/>
+									<m:Label text="Manufacturer"/>
+									<m:Text text="{products>manufactorer}"/>
+									<m:Label text="Product ID"/>
+									<m:Text text="{products>id}"/>
+									<m:Label text=""/>
+									<m:Link href="{products>source}" text="Source" target="_blank"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection title="Reviews">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+
+							<m:VBox>
+								<m:List headerText="" items="{path : 'products>reviews'}">
+									<m:FeedListItem sender="{products>reviewerName}" iconDensityAware="false" timestamp="{Date}" text="{products>reviewText}">
+									</m:FeedListItem>
+								</m:List>
+							</m:VBox>
+
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button type="Accept" text="Save"/>
+				<m:Button type="Reject" text="Cancel"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>
